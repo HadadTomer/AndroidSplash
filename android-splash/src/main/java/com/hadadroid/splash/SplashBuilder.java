@@ -50,9 +50,9 @@ public class SplashBuilder {
 
         /**
          * Set the splash activity content from a layout resource.
-         * If not set, the default layout {@link com.hadadroid.splash.R.layout#pre_defined_splash}
-         * will be used.
+         * If not set, the default pre-defined layout will be used.
          * @param layoutId Resource ID to be inflated
+         * @return current Builder instance
          */
         public Builder setLayoutId(int layoutId) {
             this.layoutId = layoutId;
@@ -63,6 +63,7 @@ public class SplashBuilder {
          * Set the minimum display time for the splash screen.
          * If not set, the minimum timeout will set to 3 seconds by default.
          * @param minimumTimeout splash minimum display time in milliseconds.
+         * @return current Builder instance
          */
         public Builder setMinimumTimeout(long minimumTimeout) {
             if (minimumTimeout <= 0) {
@@ -80,6 +81,7 @@ public class SplashBuilder {
         /**
          * Set the maximum display time for the splash screen.
          * @param maximumTimeout splash maximum display time in milliseconds.
+         * @return current Builder instance
          */
         public Builder setMaximumTimeout(long maximumTimeout) {
             if (maximumTimeout <= 0) {
@@ -97,6 +99,7 @@ public class SplashBuilder {
         /**
          * Set {@link SplashTask} to run while splash screen is displayed.
          * @param splashTask task that will run while the splash screen is displayed
+         * @return current Builder instance
          */
         public Builder setSplashTask(SplashTask splashTask) {
             this.splashTask = splashTask;
@@ -106,6 +109,7 @@ public class SplashBuilder {
         /**
          * Set an explicit transition animation to perform after {@link SplashActivity} finishes.
          * see {@link Activity#overridePendingTransition(int, int)}
+         * @return current Builder instance
          */
         public Builder overridePendingTransition(int enterAnim, int exitAnim) {
             this.enterAnim = enterAnim;
