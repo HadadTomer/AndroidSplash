@@ -14,7 +14,7 @@ install {
                 // Add your description here
                 name libraryName
                 description libraryDescription
-//                url siteUrl
+                url siteUrl
 
                 // Set your license
                 licenses {
@@ -30,12 +30,11 @@ install {
                         email developerEmail
                     }
                 }
-//                scm {
-//                    connection gitUrl
-//                    developerConnection gitUrl
-//                    url siteUrl
-//
-//                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
             }
         }
     }

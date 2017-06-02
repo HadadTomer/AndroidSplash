@@ -33,6 +33,7 @@ ext {
     libraryDescription = 'Simple lightweight and easy-to-use splash library for android'
 
     gitUrl = 'https://github.com/HadadTomer/android-splash.git'
+    siteUrl = 'https://github.com/HadadTomer/AndroidSplash'
 
     libraryVersion = version
 
