@@ -1,0 +1,2 @@
+include ':app', ':android-splash'
+project(':android-splash').projectDir = new File('android-splash')
