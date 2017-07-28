@@ -7,12 +7,15 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hadadroid.splash.SplashBuilder.OnCompleteListener;
 import com.hadadroid.splash.SplashBuilder.SplashTask;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SplashActivity extends Activity {
 
@@ -26,7 +29,7 @@ public class SplashActivity extends Activity {
     private static final long DEFAULT_MIN_TIMEOUT = 3 * 1000; // 3 seconds by default
     private static SplashTask splashTask = null;
 
-    private boolean isFinished;
+    private AtomicBoolean isFinished = new AtomicBoolean(false);
 
     private int layoutId;
     private int enterAnim, exitAnim;
@@ -58,7 +61,7 @@ public class SplashActivity extends Activity {
     }
 
     private void initArgs() {
-        isFinished = false;
+        isFinished.set(false);
 
         Bundle args = getIntent().getBundleExtra(SPLASH_ARGUMENTS);
         layoutId = args.getInt(LAYOUT_ID);
@@ -117,7 +120,7 @@ public class SplashActivity extends Activity {
     }
 
     private void finishSplash(long delay) {
-        new Handler().postDelayed(new Runnable() {
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 finishSplash();
@@ -126,17 +129,21 @@ public class SplashActivity extends Activity {
     }
 
     private void finishSplash() {
-        if (!isFinished) {
-            synchronized (this) {
-                if (!isFinished) {
-                    isFinished = true;
-                    splashTask = null;
-                    finish();
-                    if (enterAnim != 0 || exitAnim != 0) {
-                        overridePendingTransition(enterAnim, exitAnim);
-                    }
+        if (isFinished.compareAndSet(false, true)) {
+            splashTask = null;
+            finishSplashActivity();
+        }
+    }
+
+    private void finishSplashActivity() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+                if (enterAnim != 0 || exitAnim != 0) {
+                    overridePendingTransition(enterAnim, exitAnim);
                 }
             }
-        }
+        });
     }
 }

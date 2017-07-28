@@ -13,15 +13,6 @@ dependencies {
     compile 'com.hadadroid:android-splash:1.0.0'
 }
 ```
-
-Add the following activity to your AndroidManifest.xml
-
-```xml
-<activity
-    android:name="com.hadadroid.splash.SplashActivity"
-    android:screenOrientation="portrait"
-    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
-```
     
 ## Usage ##
 

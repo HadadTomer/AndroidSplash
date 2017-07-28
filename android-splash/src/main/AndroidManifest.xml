@@ -3,10 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hadadroid.splash">
 
-    <application
-        android:allowBackup="true"
-        android:supportsRtl="true">
+    <application>
 
+        <activity
+            android:name="com.hadadroid.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        
     </application>
 
 </manifest>
