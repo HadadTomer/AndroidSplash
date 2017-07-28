@@ -10,7 +10,7 @@ Add the following dependency into your app-level build.gradle
 
 ```groovy
 dependencies {
-    compile 'com.hadadroid:android-splash:1.0.0'
+    compile 'com.hadadroid:android-splash:1.0.1'
 }
 ```
     
